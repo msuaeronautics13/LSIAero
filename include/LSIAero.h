@@ -36,4 +36,7 @@ void ComputeNormals(MeshStruct &mesh);
 
 void OutputToVTK(MeshStruct &mesh, ConfigStruct &config, DataStruct &data);
 
+extern "C" {
+void nml_config(double *gamma, double *Tinf, double *R, double *Vinf, double *a);
+}
 #endif

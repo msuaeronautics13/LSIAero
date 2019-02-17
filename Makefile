@@ -1,9 +1,9 @@
 CC=g++
-CFLAGS=-std=gnu++11 -O2 -Wall -I./include
-LDFLAGS=
-OBJECTS = main.o ReadMesh.o ComputeNormals.o ModNewt.o OutputToVTK.o
+CFLAGS=-std=gnu++11 -O2 -Wall -I./include 
+LDFLAGS=-lgfortran
+OBJECTS = main.o ReadMesh.o ComputeNormals.o ModNewt.o OutputToVTK.o Config.o
 
-ThermalROM: $(OBJECTS)
+LSIAero: $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJECTS) -o LSIAero
 
 %.o : %.cpp

@@ -9,13 +9,11 @@ int main()
   ConfigStruct Config;
   DataStruct Data;
 
-  Config.gamma = 1.4;
-  Config.Tinf = 237.0;
-  double R = 287.0;
+  double R, Vinf, alpha, gamma;
+  nml_config(&Config.gamma, &Config.Tinf, &R, &Vinf, &alpha);
+  
   double a = sqrt( Config.gamma*R*Config.Tinf );
 
-  double Vinf = 2017.0;
-  double alpha = -5.0;
   Config.Vinf.resize(3);
   Config.Vinf(0) = Vinf*cos(alpha*M_PI/180.0);
   Config.Vinf(1) = Vinf*sin(alpha*M_PI/180.0);
@@ -23,6 +21,7 @@ int main()
 
   Config.Minf = Vinf/a;
   Config.meshfile = "double_wedge.lsi";
+
   ReadMesh(Mesh, Config);
 
   // Compute Modified Newtonian Method (Lees) //
