@@ -10,13 +10,13 @@ void ComputeNormals(MeshStruct &mesh)
   mat normals(mesh.num_elem,3);
 
   for (UInt i=0; i<mesh.num_elem; i++) {
-    u(0) = mesh.coords(mesh.conn(i,2)-1,0) - mesh.coords(mesh.conn(i,1)-1,0);
-    u(1) = mesh.coords(mesh.conn(i,2)-1,1) - mesh.coords(mesh.conn(i,1)-1,1);
-    u(2) = mesh.coords(mesh.conn(i,2)-1,2) - mesh.coords(mesh.conn(i,1)-1,2);
+    u(0) = mesh.coords(mesh.conn(i,2),0) - mesh.coords(mesh.conn(i,1),0);
+    u(1) = mesh.coords(mesh.conn(i,2),1) - mesh.coords(mesh.conn(i,1),1);
+    u(2) = mesh.coords(mesh.conn(i,2),2) - mesh.coords(mesh.conn(i,1),2);
 
-    v(0) = mesh.coords(mesh.conn(i,0)-1,0) - mesh.coords(mesh.conn(i,1)-1,0);
-    v(1) = mesh.coords(mesh.conn(i,0)-1,1) - mesh.coords(mesh.conn(i,1)-1,1);
-    v(2) = mesh.coords(mesh.conn(i,0)-1,2) - mesh.coords(mesh.conn(i,1)-1,2);
+    v(0) = mesh.coords(mesh.conn(i,0),0) - mesh.coords(mesh.conn(i,1),0);
+    v(1) = mesh.coords(mesh.conn(i,0),1) - mesh.coords(mesh.conn(i,1),1);
+    v(2) = mesh.coords(mesh.conn(i,0),2) - mesh.coords(mesh.conn(i,1),2);
 
     product(0) = u(1)*v(2) - u(2)*v(1);
     product(1) = u(2)*v(0) - u(0)*v(2);
@@ -32,8 +32,8 @@ void ComputeNormals(MeshStruct &mesh)
   double sumnormx,sumnormy,sumnormz,shared;
   for (UInt i=0; i<mesh.num_nodes; i++) {
     for (UInt j=0; j<mesh.num_elem; j++) {
-      if ((mesh.conn(j,0) == i+1) || (mesh.conn(j,1) == i+1) || (mesh.conn(j,2) == i+1) ||
-	  (mesh.conn(j,3) == i+1)) {
+      if ((mesh.conn(j,0) == i) || (mesh.conn(j,1) == i) || (mesh.conn(j,2) == i) ||
+	  (mesh.conn(j,3) == i)) {
 	sumnormx += normals(j,0);
 	sumnormy += normals(j,1);
 	sumnormz += normals(j,2);

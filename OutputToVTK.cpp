@@ -16,7 +16,7 @@ void OutputToVTK(MeshStruct &mesh, ConfigStruct &config, DataStruct &data)
   fprintf(fp, "\n"); 
   fprintf(fp, "CELLS %u %u\n", mesh.num_elem, mesh.num_elem*5);
   for (UInt i=0; i<mesh.num_elem; i++) {
-    fprintf(fp, "4 %u %u %u %u\n", mesh.conn(i,0)-1, mesh.conn(i,1)-1, mesh.conn(i,2)-1, mesh.conn(i,3)-1);
+    fprintf(fp, "4 %u %u %u %u\n", mesh.conn(i,0), mesh.conn(i,1), mesh.conn(i,2), mesh.conn(i,3));
   }
   fprintf(fp, "\n");
   fprintf(fp, "CELL_TYPES %u\n", mesh.num_elem);
@@ -31,4 +31,3 @@ void OutputToVTK(MeshStruct &mesh, ConfigStruct &config, DataStruct &data)
   }
   fclose(fp);
 }
-

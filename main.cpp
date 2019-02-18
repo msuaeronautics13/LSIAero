@@ -20,7 +20,7 @@ int main()
   Config.Vinf(2) = 0.0;
 
   Config.Minf = Vinf/a;
-  Config.meshfile = "double_wedge.lsi";
+  Config.meshfile = "orion_quad.vtk";
 
   ReadMesh(Mesh, Config);
 
