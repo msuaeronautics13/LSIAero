@@ -25,6 +25,7 @@ struct ConfigStruct {
 };
 struct DataStruct {
   vec Cp;
+  mat Vsurf;
 };
 
 

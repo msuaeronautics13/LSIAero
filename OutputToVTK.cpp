@@ -29,5 +29,9 @@ void OutputToVTK(MeshStruct &mesh, ConfigStruct &config, DataStruct &data)
   for (UInt i=0; i<mesh.num_nodes; i++) {
     fprintf(fp, "%lf\n", data.Cp(i));
   }
+  fprintf(fp, "VECTORS Vsurf float\n");
+  for (UInt i=0; i<mesh.num_nodes; i++) {
+    fprintf(fp, "%lf %lf %lf\n", data.Vsurf(i,0), data.Vsurf(i,1), data.Vsurf(i,2));
+  }
   fclose(fp);
 }
